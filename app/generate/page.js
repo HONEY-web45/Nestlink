@@ -113,7 +113,7 @@ useEffect(() => {
 </div>
          
 
-          <button className='disabled:bg-gray-400 w-fit px-6 py-2 m-3 rounded-full bg-slate-700 text-white font-bold'onClick={add} disabled={links[links.length-1].link.length<8} >+ Add Link</button>
+          <button className='disabled:bg-gray-400 w-fit px-6 py-2 m-3 rounded-full bg-slate-700 text-white font-bold'onClick={add} disabled={links[links.length-1].link.length<8 || links[links.length-1].linktext.length<3} >+ Add Link</button>
 
 
 
