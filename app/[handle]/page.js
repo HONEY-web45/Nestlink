@@ -11,15 +11,15 @@ const item=await collection.findOne({Handle:handle})
 if (!item) {
  notFound()
 }
-
+   
 
 
 
    
-    return (<div className="bg-gradient-to-br from-indigo-800 from-10% via-purple-800 via-30% to-teal-700 to-90%  min-h-screen flex flex-col items-center gap-4   text-white py-20 ">
+    return (<div className=" bg-gradient-to-br from-indigo-800 from-10% via-purple-800 via-30% to-teal-700 to-90%  min-h-screen flex flex-col items-center gap-4   text-white py-20 ">
         <div className="pic flex flex-col gap-5">
 
-        <img src={item.pic} alt="" className="h-[100px] w-[100px]  rounded-full" />
+        <img src={item.pic} alt="Enter the correct URL"  className="h-[100px] w-[100px]  rounded-xl text-lg font-bold" />
         <div className="text-center font-bold  text-xl">{item.Handle}</div>
         </div>
         <div className="links flex flex-col gap-4">
@@ -43,3 +43,4 @@ if (!item) {
         </div>
         </div>)
   }
+

@@ -14,3 +14,7 @@ export default function About() {
     </main>
   );
 }
+
+export const metadata = {
+  title: "About--Linknest"
+};

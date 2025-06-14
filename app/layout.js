@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Linknest-Your favourite link sharing site",
+  title: "Linknest--Your favourite link sharing site",
   description: "We brought a revolution in link sharing",
 };
 

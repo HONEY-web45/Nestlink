@@ -32,3 +32,9 @@ export default function Contact() {
     </main>
   );
 }
+
+
+export const metadata = {
+  title: "Contact--Linknest"
+};
+ 

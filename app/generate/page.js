@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useState } from 'react'
@@ -72,6 +72,11 @@ const add=()=>{
     }
 
   }
+useEffect(() => {
+  document.title="Generate--Linknest"
+
+ 
+}, [])
 
 
   return (
@@ -108,14 +113,14 @@ const add=()=>{
 </div>
          
 
-          <button className='w-fit px-6 py-2 m-3 rounded-full bg-slate-700 text-white font-bold'onClick={add} >+ Add Link</button>
+          <button className='disabled:bg-gray-400 w-fit px-6 py-2 m-3 rounded-full bg-slate-700 text-white font-bold'onClick={add} disabled={links[links.length-1].link.length<8} >+ Add Link</button>
 
 
 
           <div className='w-full mt-10 flex flex-col items-center gap-5 '>
             <h2 className='text-xl font-medium text-center'>Step 3: Add Picture and Finalize</h2>
             <input type="text" value={pic} placeholder='Enter Link to your Picture' className='sm:w-8/12 py-3 px-6  rounded-full  focus:outline-gray-400 ml-3' onChange={changepic} required />
-           <button className='w-fit  pd p-3 px-5 block mx-auto rounded-full font-bold bg-slate-700 text-white' onClick={create}>Create  LinkNest</button>
+           <button className='w-fit disabled:bg-gray-400  pd p-3 px-5 block mx-auto rounded-full font-bold bg-slate-700 text-white' onClick={create} disabled={pic.length<30}>Create  LinkNest</button>
 
 
 
@@ -128,3 +133,4 @@ const add=()=>{
 }
 
 export default page
+
