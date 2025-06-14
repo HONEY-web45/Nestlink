@@ -7,11 +7,15 @@ import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 const page = () => {
- const search=useSearchParams()
   const [links, setlinks] = useState([{ link: "", linktext: "" }])
   const [pic, setpic] = useState("")
+  const search=useSearchParams()
 
-  const [handle, sethandle] = useState(search.get("handle") || "")
+  const [handle, sethandle] = useState( "")
+  useEffect(() => {
+  sethandle(search.get("handle") || "");
+}, [search])
+
 
 const router=useRouter()
 const changelinks=(index,link,linktext)=>{
@@ -58,7 +62,7 @@ const add=()=>{
       redirect: "follow"
     };
 
-    const a = await fetch("http://localhost:3000/api/generate", requestOptions)
+    const a = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/generate`, requestOptions)
     const b = await a.json()
     if(b.success){
     toast.success(b.message)
