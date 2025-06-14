@@ -13,7 +13,7 @@ const page = () => {
 
   const [handle, sethandle] = useState( "")
   useEffect(() => {
-  sethandle(search.get("handle") || "");
+  sethandle(search.get("handle"));
 }, [search])
 
 
