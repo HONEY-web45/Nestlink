@@ -103,7 +103,10 @@ useEffect(() => {
 
           <div className='w-full mt-10 flex flex-col items-center gap-5 '>
             <h2 className='text-xl font-medium text-center'>Step 1: Claim your Handle</h2>
-            <input type="text" placeholder="Choose a Handle" onChange={ changehandle} value={handle} className="px-6 py-3 rounded-full focus:outline-gray-400" />
+            <Suspense>
+
+           <input/>
+            </Suspense>
           </div>
 
   <div className='w-full mt-10 flex flex-col items-center gap-5'>
