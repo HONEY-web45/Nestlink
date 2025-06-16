@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import HandleInput from '@/components/Input'
 
 const page = () => {
   const [links, setlinks] = useState([{ link: "", linktext: "" }])
@@ -105,7 +106,7 @@ useEffect(() => {
             <h2 className='text-xl font-medium text-center'>Step 1: Claim your Handle</h2>
             <Suspense>
 
-           <input/>
+         <HandleInput/>
             </Suspense>
           </div>
 

@@ -1,27 +1,29 @@
-import React from 'react'
-import { useState,useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
-const Input = () => {
-      const search=useSearchParams()
-    
-      const [handle, sethandle] = useState(  "")
-     
-    const changehandle = (e) => {
-        sethandle(e.target.value)
-        console.log(handle);
-        
-      }
-    
-      useEffect(() => {
-        sethandle(search.get("handle") || "")
-      
-        
-      }, [])
-  return (
-    <div>
-       <input type="text" placeholder="Choose a Handle" onChange={ changehandle} value={handle} className="px-6 py-3 rounded-full focus:outline-gray-400" />
-    </div>
-  )
-}
+import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 
-export default Input
+const HandleInput = () => {
+  const searchParams = useSearchParams();
+  const [handle, setHandle] = useState("");
+
+  useEffect(() => {
+    // Fetch query param only when component mounts
+    setHandle(searchParams.get("handle") || "");
+  }, [searchParams]); // Add dependency to ensure correct updates
+
+  const changeHandle = (e) => {
+    setHandle(e.target.value);
+    console.log(e.target.value); // Logs updated value correctly
+  };
+
+  return (
+    <input
+      type="text"
+      placeholder="Choose a Handle"
+      onChange={changeHandle}
+      value={handle}
+      className="px-6 py-3 rounded-full focus:outline-gray-400"
+    />
+  );
+};
+
+export default HandleInput;
