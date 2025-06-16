@@ -6,30 +6,35 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import HandleInput from '@/components/Input'
 
 const page = () => {
+  const router=useRouter()
   const [links, setlinks] = useState([{ link: "", linktext: "" }])
   const [pic, setpic] = useState("")
-  const search=useSearchParams()
-
+  
   const [handle, sethandle] = useState(  "")
- 
-const changehandle = (e) => {
+  
+  const changehandle = (e) => {
     sethandle(e.target.value)
     console.log(handle);
     
   }
+  
+  function Search (){
+    var search=useSearchParams()
+    useEffect(() => {
+      sethandle(search.get("handle") || "")
+      
+      
+    }, [])
 
-  useEffect(() => {
-    sethandle(search.get("handle") || "")
-  
-    
-  }, [])
-  
+    return <input type="text" placeholder="Choose a Handle" onChange={ changehandle} value={handle} className="px-6 py-3 rounded-full focus:outline-gray-400" />  
+  }
   
 
-const router=useRouter()
+
+
+
 const changelinks=(index,link,linktext)=>{
 
 setlinks((initial)=>{
@@ -106,7 +111,7 @@ useEffect(() => {
             <h2 className='text-xl font-medium text-center'>Step 1: Claim your Handle</h2>
             <Suspense>
 
-         <HandleInput/>
+         <Search />
             </Suspense>
           </div>
 
