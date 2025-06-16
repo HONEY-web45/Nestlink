@@ -1,21 +1,32 @@
 "use client"
+import { Suspense } from 'react'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import Link from 'next/link'
+
 const page = () => {
   const [links, setlinks] = useState([{ link: "", linktext: "" }])
   const [pic, setpic] = useState("")
   const search=useSearchParams()
 
-  const [handle, sethandle] = useState( "")
-  useEffect(() => {
-  sethandle(search.get("handle"));
-}, [search])
+  const [handle, sethandle] = useState(  "")
+ 
+const changehandle = (e) => {
+    sethandle(e.target.value)
+    console.log(handle);
+    
+  }
 
+  useEffect(() => {
+    sethandle(search.get("handle") || "")
+  
+    
+  }, [])
+  
+  
 
 const router=useRouter()
 const changelinks=(index,link,linktext)=>{
@@ -31,9 +42,7 @@ else{
   })
 })
 }
-  const changehandle = (e) => {
-    sethandle(e.target.value)
-  }
+ 
   
   const changepic = (e) => {
     setpic(e.target.value)
@@ -94,7 +103,7 @@ useEffect(() => {
 
           <div className='w-full mt-10 flex flex-col items-center gap-5 '>
             <h2 className='text-xl font-medium text-center'>Step 1: Claim your Handle</h2>
-            <input type="text" placeholder='Choose a Handle' onChange={changehandle} value={handle} className=' px-6 py-3  rounded-full  focus:outline-gray-400' />
+            <input type="text" placeholder="Choose a Handle" onChange={ changehandle} value={handle} className="px-6 py-3 rounded-full focus:outline-gray-400" />
           </div>
 
   <div className='w-full mt-10 flex flex-col items-center gap-5'>
