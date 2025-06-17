@@ -18,10 +18,10 @@ if (!item) {
    
     return (<div className=" bg-gradient-to-b from-gray-900 via-blue-200 to-gray-950  min-h-screen flex flex-col items-center gap-4 justify-center   text-white py-20 ">
       <div className=" in  bg-gradient-to-b from-gray-400 to-gray-300 px-6 py-10 flex flex-col items-center  gap-10 rounded-3xl">
-        <div className="pic flex flex-col items-center gap-5">
+        <div className="pic flex flex-col items-center gap-2">
 
         <img src={item.pic} alt="Enter the correct URL"  className="h-[100px] w-[100px]  rounded-xl text-lg font-bold" />
-        <div className="text-center font-bold  text-xl">{item.Handle}</div>
+        <div className="text-center font-bold text-black text-xl">{item.Handle}</div>
         </div>
         <div className="links flex flex-col gap-4">
          {item.Links.map((item,i)=>{
@@ -29,10 +29,10 @@ if (!item) {
                
              
              {!item.link.includes("https://") && <Link href={"https://" +item.link } target="_blank"  >
-              <div className="bg-fuchsia-50 text-wrap break-words text-slate-700 py-3 rounded-lg text-center px-16 text-lg font-semibold" key={i} >{item.linktext}</div>
+              <div className="bg-fuchsia-50 text-wrap break-words text-slate-700 py-3 w-56 rounded-lg text-center  text-lg font-semibold" key={i} >{item.linktext}</div>
              </Link>}
              {item.link.includes("https://") && <Link href={ item.link } target="_blank"  >
-              <div className="bg-fuchsia-50 text-wrap break-words text-slate-700 py-3 rounded-lg text-center px-16 text-lg font-semibold" key={i} >{item.linktext}</div>
+              <div className="bg-fuchsia-50 text-wrap break-words text-slate-700 py-3 rounded-lg text-center w-56 text-lg font-semibold" key={i} >{item.linktext}</div>
              </Link>}
              
                 

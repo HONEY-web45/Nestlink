@@ -40,11 +40,11 @@ const namechange1=(e)=>{
     </section>
 
 
-    <section className=" bg-gradient-to-br from-gray-900 via-blue-400 to-gray-700 min-h-screen grid md:grid-cols-2 pb-1">
+    <section className=" bg-gradient-to-br from-gray-900 via-[#523c69] to-gray-700 min-h-screen grid md:grid-cols-2 pb-1">
 <div className="flex flex-col my-10 gap-20 ">
   <div>
 
-  <h1 className="text-5xl font-bold fnt leading-tight text-slate-200 px-10 md:px-0 text-center">View your Existing Linknest</h1>
+  <h1 className="text-5xl font-bold fnt leading-tight text-slate-50 px-10 md:px-0 text-center">View your Existing Linknest</h1>
   <p className="text-white text-center px-10 pt-10 text-lg font-semibold ">Enter your Linknest handle to view your existing linknest</p>
   
 </div>
