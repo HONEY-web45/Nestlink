@@ -1,9 +1,9 @@
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
-const HandleInput = () => {
+const HandleInput = ({handle, setHandle}) => {
   const searchParams = useSearchParams();
-  const [handle, setHandle] = useState("");
+  // const [handle, setHandle] = useState("");
 
   useEffect(() => {
     // Fetch query param only when component mounts
@@ -19,7 +19,7 @@ const HandleInput = () => {
     <input
       type="text"
       placeholder="Choose a Handle"
-      onChange={changeHandle}
+      onChange={(e)=>changeHandle(e)}
       value={handle}
       className="px-6 py-3 rounded-full focus:outline-gray-400"
     />

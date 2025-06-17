@@ -1,35 +1,19 @@
 "use client"
-import { Suspense } from 'react'
+import { Suspense} from 'react'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import Input from '@/components/Input'
+
 
 const page = () => {
+
+  const [handle, setHandle] = useState("");
   const router=useRouter()
   const [links, setlinks] = useState([{ link: "", linktext: "" }])
   const [pic, setpic] = useState("")
-  
-  const [handle, sethandle] = useState(  "")
-  
-  const changehandle = (e) => {
-    sethandle(e.target.value)
-    console.log(handle);
-    
-  }
-  
-  function Search (){
-    var search=useSearchParams()
-    useEffect(() => {
-      sethandle(search.get("handle") || "")
-      
-      
-    }, [])
-
-    return <input type="text" placeholder="Choose a Handle" onChange={ changehandle} value={handle} className="px-6 py-3 rounded-full focus:outline-gray-400" />  
-  }
   
 
 
@@ -84,7 +68,7 @@ const add=()=>{
   await  router.push(`/${handle}`)
     setpic("")
   setlinks([{ link: "", linktext: "" }])
-    sethandle("")
+    setHandle("")
 }
     else{
       toast.error(b.message)
@@ -102,16 +86,16 @@ useEffect(() => {
     <div>
 
       <ToastContainer />
-      <section className='bg-gradient-to-br from-fuchsia-950 via-fuchsia-100 to-gray-400  flex   py-[25vh]  flex-col  items-center  min-h-screen px-20'>
+      <section className='bg-gradient-to-br from-gray-600 via-fuchsia-50 to-gray-700  flex   py-[25vh]  flex-col  items-center  min-h-screen px-20'>
         
           <h1 className='font-bold text-5xl text-center'>Create Your Linknest</h1>
 
 
           <div className='w-full mt-10 flex flex-col items-center gap-5 '>
             <h2 className='text-xl font-medium text-center'>Step 1: Claim your Handle</h2>
-            <Suspense>
-
-         <Search />
+            <Suspense fallback={<div>Loading feed...</div>}>
+<Input handle={handle} setHandle={setHandle} />
+         
             </Suspense>
           </div>
 
@@ -135,14 +119,14 @@ useEffect(() => {
 </div>
          
 
-          <button className='disabled:bg-gray-400 w-fit px-6 py-2 m-3 rounded-full bg-slate-700 text-white font-bold'onClick={add} disabled={links[links.length-1].link.length<8 || links[links.length-1].linktext.length<3} >+ Add Link</button>
+          <button className='disabled:bg-gray-400 w-fit px-6 py-2 m-3 rounded-full bg-slate-700 text-white font-bold'onClick={add} disabled={links[links.length-1].link.length<8 || links[links.length-1].linktext.length<2} >+ Add Link</button>
 
 
 
           <div className='w-full mt-10 flex flex-col items-center gap-5 '>
             <h2 className='text-xl font-medium text-center'>Step 3: Add Picture and Finalize</h2>
             <input type="text" value={pic} placeholder='Enter Link to your Picture' className='sm:w-8/12 py-3 px-6  rounded-full  focus:outline-gray-400 ml-3' onChange={changepic} required />
-           <button className='w-fit disabled:bg-gray-400  pd p-3 px-5 block mx-auto rounded-full font-bold bg-slate-700 text-white' onClick={create} disabled={pic.length<30}>Create  LinkNest</button>
+           <button className='w-fit disabled:bg-gray-400  pd p-3 px-5 block mx-auto rounded-full font-bold bg-slate-700 text-white' onClick={create} disabled={pic.length<30 || links[links.length-1].link.length<8 || links[links.length-1].linktext.length<2}>Create  LinkNest</button>
 
 
 
