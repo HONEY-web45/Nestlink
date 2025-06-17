@@ -40,17 +40,17 @@ const namechange1=(e)=>{
     </section>
 
 
-    <section className=" bg-gradient-to-b from-gray-900 via-slate-400 to-gray-900 min-h-screen grid md:grid-cols-2">
+    <section className=" bg-gradient-to-br from-gray-900 via-blue-400 to-gray-700 min-h-screen grid md:grid-cols-2 pb-1">
 <div className="flex flex-col my-10 gap-20 ">
   <div>
 
-  <h1 className="text-5xl font-bold fnt leading-tight text-slate-300 px-10 md:px-0 text-center">View your Existing Linknest</h1>
+  <h1 className="text-5xl font-bold fnt leading-tight text-slate-200 px-10 md:px-0 text-center">View your Existing Linknest</h1>
   <p className="text-white text-center px-10 pt-10 text-lg font-semibold ">Enter your Linknest handle to view your existing linknest</p>
   
 </div>
 
     <div className="btn space-x-2 p0 p-3 text-black flex flex-col items-center gap-5 px-20  ">
-  <input type="text" placeholder="linkne.st/yourname " value={name1} className="focus:outline-green-500 w-full p-5 rounded-lg" onChange={namechange1} />
+  <input type="text" placeholder="linkne.st/yourname " value={name1} className="focus:outline-green-500 w-full p-5 rounded-3xl" onChange={namechange1} />
   <button className="bg-fuchsia-200 w-fit px-7  py-5 rounded-full" onClick={view}>View your Linknest</button>
 </div>
   </div>

@@ -42,7 +42,22 @@ const add=()=>{
   setlinks(links.concat([{link:"",linktext:""}]))
 }
 
-  const create = async (link) => {
+  const create = async () => {
+    if (handle.length>17) {
+      throw toast.error("Handle is too long, it should be less than 20 characters");
+    }
+       
+    else if (handle.length < 3) {
+      throw toast.error("Handle is too short, it should be at least 3 characters");
+    }
+    else if (links[links.length-1].linktext.length>12) {
+      throw toast.error("Link text is too long, it should be less than 12 characters");
+    }
+    else if (links[links.length-1].linktext.length < 2) {
+      throw toast.error("Link text is too short, it should be at least 2 characters");
+    }
+
+    
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -89,7 +104,8 @@ useEffect(() => {
       <section className='bg-gradient-to-br from-gray-600 via-fuchsia-50 to-gray-700  flex   py-[25vh]  flex-col  items-center  min-h-screen px-20'>
         
           <h1 className='font-bold text-5xl text-center'>Create Your Linknest</h1>
-
+ <div className=" in  bg-gradient-to-b from-gray-100 to-gray-200 px-4 py-10 flex flex-col items-center  mt-5 mr-1 rounded-3xl">
+        
 
           <div className='w-full mt-10 flex flex-col items-center gap-5 '>
             <h2 className='text-xl font-medium text-center'>Step 1: Claim your Handle</h2>
@@ -126,13 +142,13 @@ useEffect(() => {
           <div className='w-full mt-10 flex flex-col items-center gap-5 '>
             <h2 className='text-xl font-medium text-center'>Step 3: Add Picture and Finalize</h2>
             <input type="text" value={pic} placeholder='Enter Link to your Picture' className='sm:w-8/12 py-3 px-6  rounded-full  focus:outline-gray-400 ml-3' onChange={changepic} required />
-           <button className='w-fit disabled:bg-gray-400  pd p-3 px-5 block mx-auto rounded-full font-bold bg-slate-700 text-white' onClick={create} disabled={pic.length<30 || links[links.length-1].link.length<8 || links[links.length-1].linktext.length<2}>Create  LinkNest</button>
+           <button className='w-fit disabled:bg-gray-400  pd p-3 px-5 block mx-auto rounded-full font-bold bg-slate-700 text-white' onClick={create} disabled={pic.length<30 || links[links.length-1].link.length<8  }>Create  LinkNest</button>
 
 
 
           
         </div>
-        
+        </div>
       </section>
     </div>
   )
